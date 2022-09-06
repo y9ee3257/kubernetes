@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  name: nginx-ingress
+spec:
+  tls:
+    - hosts:
+        - www.ravithummala.com
+      secretName: admin-app-cert
+    - hosts:
+        - xp.tradery.io
+      secretName: admin-cert
+  rules:
+    - host: xp.tradery.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-service
+                port:
+                  number: 8080
+    - host: www.ravithummala.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-service
+                port:
+                  number: 8080

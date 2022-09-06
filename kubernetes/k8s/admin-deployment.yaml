@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-app
+  template:
+    metadata:
+      labels:
+        app: admin-app
+    spec:
+      containers:
+        - name: admin-app
+          image: 965265258350.dkr.ecr.us-east-1.amazonaws.com/admin:latest
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+spec:
+  type: NodePort
+  selector:
+    app: admin-app
+  ports:
+    - port: 8080
+      targetPort: 8080

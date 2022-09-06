@@ -1,0 +1,21 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: tradery-capital-admin
+  region: us-east-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.small
+    desiredCapacity: 2
+    volumeSize: 20
+    ssh:
+      allow: true
+  - name: ng-2
+    instanceType: t2.small
+    desiredCapacity: 2
+    volumeSize: 20
+    ssh:
+      allow: true
+availabilityZones: ['us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d']

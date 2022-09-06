@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: admin-app
+  namespace: default
+spec:
+  dnsNames:
+    - xp.tradery.io
+  secretName: admin-cert
+  issuerRef:
+    name: lets-encrypt-cluster-issuer
+    kind: ClusterIssuer

@@ -1,0 +1,3 @@
+resources:
+  - admin-deployment.yaml
+  - scheduler-service-deployment.yaml
